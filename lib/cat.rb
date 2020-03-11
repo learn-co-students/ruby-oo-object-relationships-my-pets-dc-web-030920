@@ -16,6 +16,10 @@ class Cat
     @@all 
   end 
 
+  def count
+    @@all.count
+  end
+
 
 
 end
