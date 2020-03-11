@@ -15,6 +15,15 @@ class Dog
 
   def self.all 
     @@all 
+  
   end 
+  
+  def count
+    self.all.length
+  end
+
+
+
+
 
 end
