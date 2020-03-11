@@ -9,6 +9,7 @@ class Dog
     @mood = "nervous"
     @name = name
     @owner = owner
+    @@all << self
   end
 
   def self.all
