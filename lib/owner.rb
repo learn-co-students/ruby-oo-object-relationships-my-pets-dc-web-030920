@@ -23,15 +23,22 @@ class Owner
 
   def self.count #class method
     @@all_owners.length
+    #self.all.length
+    #Owner.all.length
   end
 
   def self.reset_all #class method
     @@all_owners.clear #method .clear is used to remove all the elements in the array.
+    # @@all_owners = []
+    #self.all.clear   #self is also @@all_owners
+    #Owner.all.clear
   end
 
   def cats 
+  # Cat.all.select do |cat_instance|
+  #   cat_instance == self
+  # end
     Cat.all.find_all{|cat| cat.owner == self} # in the array "Cat.all" find all cats that have an owner name equals to self.
-  #binding.pry
   end
 
   def dogs
@@ -39,13 +46,41 @@ class Owner
   end
   
   def buy_cat(cat_name)
-    new_cat = Cat.new(cat_name, self) #you have to make the new cat buyable
+    Cat.new(cat_name, self) #you have to make the new cat buyable
   end
 
   def buy_dog(dog_name)
-    new_dog = Dog.new(dog_name, self) #you have to make the new dog buyable
+    Dog.new(dog_name, self) #you have to make the new dog buyable
   end
   def walk_dogs
-    dogs.mood = "happy"
-  end
+    self.dogs.each {|dog| dog.mood = "happy"}
+   end
+
+   def feed_cats
+    self.cats.each {|cat| cat.mood = "happy"}
+   end
+
+    def sell_pets
+      # self.cats.each do |cat| 
+      #   cat.mood = 'nervous'
+      #   cat.owner =nil
+      # end
+
+      # self.dogs.each do |dog|
+      #   dog.mood = 'nervous'
+      #   dog.owner = nil
+      # end
+
+      pets = self.cats + self.dogs
+
+      pets.each do |pet|
+        pet.mood = 'nervous'
+        pet.owner = nil
+      end
+    end
+
+    def list_pets
+      "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+    end
+
 end

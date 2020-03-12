@@ -10,10 +10,12 @@ class Cat
     @owner = owner
     @mood = "nervous"
     @@all_cats << self #each instance of the class Cat will shovel inside the @@all_cats array
+    #Cat.all << self
+    #self.class.all << self
   end
 
   def self.all 
-    return @@all_cats
+     @@all_cats
   end
 
 
