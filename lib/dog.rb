@@ -16,5 +16,6 @@ attr_accessor :owner, :mood
   def self.all
     @@all_dogs
   end
+ 
 end
 

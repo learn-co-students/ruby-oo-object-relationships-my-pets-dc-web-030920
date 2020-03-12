@@ -21,7 +21,7 @@ class Owner
     @@all_owners
   end
 
-  def self.counownt #class method
+  def self.count #class method
     @@all_owners.length
   end
 
@@ -30,7 +30,22 @@ class Owner
   end
 
   def cats 
-    Cat.all.find_all{|cat| cat.owner == self}
+    Cat.all.find_all{|cat| cat.owner == self} # in the array "Cat.all" find all cats that have an owner name equals to self.
   #binding.pry
+  end
+
+  def dogs
+    Dog.all.find_all {|dog| dog.owner == self}
+  end
+  
+  def buy_cat(cat_name)
+    new_cat = Cat.new(cat_name, self) #you have to make the new cat buyable
+  end
+
+  def buy_dog(dog_name)
+    new_dog = Dog.new(dog_name, self) #you have to make the new dog buyable
+  end
+  def walk_dogs
+    dogs.mood = "happy"
   end
 end
